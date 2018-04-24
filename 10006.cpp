@@ -54,4 +54,4 @@ int main()
 	return 0;
 }
 
-// Solver: RankSS & ajc21
+// Solver: RankSS & mochithedog
