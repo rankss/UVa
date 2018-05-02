@@ -43,13 +43,13 @@ int main()
 	int n, a, b, i, j;
 	string command, action;
 	for (i = 0; i < 26; i++)
+	{
 		count[i] = 1;
-	for (i = 0; i < 26; i++)
 		world[i][0] = i;
-	for (i = 0; i < 26; i++)
 		location[i] = i;
-	for (i = 0; i < 26; i++)
 		position[i] = 0;
+	}
+		
 	cin >> n;
 	while (cin >> command >> a >> action >> b)
 	{
