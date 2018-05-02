@@ -4,7 +4,7 @@ using namespace std;
 
 int main()
 {
-	int l, h, r, dp[10001] = {}, i,left = 10001, right = 0;
+	int l, h, r, dp[10001] = {}, i, left = 10001, right = 0;
 	memset(dp, 0, sizeof(dp));
 	while (cin >> l >> h >> r)
 	{
