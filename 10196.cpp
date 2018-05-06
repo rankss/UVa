@@ -13,11 +13,10 @@ bool empty()
 	return true;
 }
 
-int color(char a)
+bool color(char a)
 {
-	if (a >= 97 && a <= 122) return 0;
-	if (a >= 65 && a <= 90) return 1;
-	return -1;
+	if (a >= 97 && a <= 122 || a >= 65 && a <= 90) return true;
+	return false;
 }
 
 bool within(int i, int j)
@@ -32,8 +31,8 @@ bool check(int x, int y, int c)
 	int b[8][2] = {{-1,-1},{-1,1},{1,1},{1,-1}},
 		n[8][2] = {{-2,-1},{-1,-2},{2,-1},{1,-2},{2,1},{1,2},{-2,1},{-1,2}},
 		r[4][2] = {{-1,0},{0,-1},{1,0},{0,1}},
-		p[2][2],
-		lf, bi, bj, ni, nj, ri, rj, pi, pj, k;
+		p[2][2], lf, bi, bj, ni, nj, ri, rj, pi, pj, k;
+		
 	if (c)
 	{ 
 		lf = 32;
@@ -44,6 +43,7 @@ bool check(int x, int y, int c)
 		lf = 0;
 		p[0][0] = 1, p[0][1] = -1, p[1][0] = 1, p[1][1] = 1;
 	}
+
 	for (k = 0; k < 8; k++)
 	{
 		ni = x+n[k][0], nj = y+n[k][1];
@@ -53,12 +53,12 @@ bool check(int x, int y, int c)
 	for (k = 0; k < 4; k++)
 	{
 		bi = x, bj = y;
-		while (color(board[bi][bj]) == -1 && within(bi, bj))
+		while (!color(board[bi][bj]) && within(bi, bj))
 			bi+=b[k][0], bj+=b[k][1];
 		if (board[bi][bj] == 'B'+lf || board[bi][bj] == 'Q'+lf)
 			return true;
 		ri = x, rj = y;
-		while (color(board[ri][rj]) == -1 && within(ri, rj))
+		while (!color(board[ri][rj]) && within(ri, rj))
 			ri+=r[k][0], rj+=r[k][1];
 		if (board[ri][rj] == 'R'+lf || board[ri][rj] == 'Q'+lf)
 			return true;
